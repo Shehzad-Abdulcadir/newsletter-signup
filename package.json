@@ -1,0 +1,16 @@
+{
+    "name": "newsletter-signup",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html"
+    },
+    "repository": "https://github.com/Shehzad-Abdulcadir/newsletter-signup.git",
+    "author": "Shehzad Abdulcadir",
+    "license": "MIT",
+    "devDependencies": {
+        "parcel-bundler": "^1.12.3",
+        "sass": "^1.22.3"
+    }
+}
