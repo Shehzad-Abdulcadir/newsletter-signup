@@ -193,6 +193,20 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./scss/styles.scss");
+
+// Import SCSS
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCcgk5uQ7BMLD99bom55tqD_MZLQgs254I",
+  authDomain: "shez-a5a8d.firebaseapp.com",
+  databaseURL: "https://shez-a5a8d.firebaseio.com",
+  projectId: "shez-a5a8d",
+  storageBucket: "shez-a5a8d.appspot.com",
+  messagingSenderId: "195337069678",
+  appId: "1:195337069678:web:946ec548706c7d7f"
+}; // Initialize Firebase
+
+firebase.initializeApp(firebaseConfig);
 },{"./scss/styles.scss":"scss/styles.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -221,7 +235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59495" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59812" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
