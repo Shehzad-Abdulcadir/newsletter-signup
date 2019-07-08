@@ -1,2 +1,37 @@
 // Normalize CSS
 @import 'normalize';
+
+// Styles
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16rem auto;
+}
+
+.newsletter {
+    &__input {
+        padding: 10px;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    &__button {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.9;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
