@@ -213,51 +213,62 @@ var emailRef = firebase.database().ref(); // Listen for form submit
 document.getElementById('newsletter-form').addEventListener('submit', submitForm); // Submit form
 
 function submitForm(e) {
-  e.preventDefault(); //Get email value
+  e.preventDefault(); //Get email value and convert it to lowercase
 
-  var email = getInputVal('newsletter-email'); // Save message
+  var email = getInputVal('newsletter-email').toLowerCase();
 
-  saveMessage(email);
+  if (validateEmail(email)) {
+    // Run saveEmail function
+    saveEmail(email);
+  } else {
+    // Throw an error if the email address entered is invalid
+    alert('Error! Please enter a valid email address.');
+  }
 } // Function to get form value (Email Address)
 
 
 function getInputVal(id) {
   return document.getElementById(id).value;
+} // Email Validation function
+
+
+function validateEmail(email) {
+  var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+  return re.test(email);
 } // Save email to firebase
 
 
-function saveMessage(email) {
+function saveEmail(email) {
   emailRef.once('value') // Return snapshot of the DB
   .then(function (dataSnapshot) {
     // Returns DB entries as collection of objects
-    var lol = Object.values(dataSnapshot.val()); // Filters to the first item in the object (in our case it's users) which returns another
+    var databaseObj = Object.values(dataSnapshot.val()); // Filters to the first item in the object (in our case it's users) which returns another
     // set of objects that are our email address key/values (Email: Value).
     // Returns just the value from the object
 
-    var obj = Object.values(lol[0]); // Init empty Array
+    var obj = Object.values(databaseObj[0]); // Init empty Array
 
     var arr = []; // For each item in our array, add it to our arr variable
 
     obj.forEach(function (val) {
       arr = arr.concat(Object.values(val));
-    }); // if email address is included in our array then throw some sort of error to say it exists.
+    }); // If email address is included in our array then throw some sort of error to say it exists.
 
     if (arr.includes(email)) {
-      console.log('it exists'); //If it doesn't exist then post value to database
+      alert('Error! The Email address already exists in the database.'); // If it doesn't exist then post value to database
     } else {
       emailRef.child('users').push().set({
         'email': email
       });
-      alert('Your Email address has been saved!');
+      alert('Success! Your Email address has been saved!');
     } // If the database is empty, it throws an error so within the error catch,
     // add the value to the database
 
   }).catch(function (err) {
-    console.log(err);
     emailRef.child('users').push().set({
       'email': email
     });
-    alert('Your Email address has been saved!');
+    alert('Success! Your Email address has been saved!');
   });
 }
 },{"./scss/styles.scss":"scss/styles.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -288,7 +299,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56188" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51552" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
