@@ -206,7 +206,60 @@ var firebaseConfig = {
   appId: "1:195337069678:web:946ec548706c7d7f"
 }; // Initialize Firebase
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); // Reference messages collection
+
+var emailRef = firebase.database().ref(); // Listen for form submit
+
+document.getElementById('newsletter-form').addEventListener('submit', submitForm); // Submit form
+
+function submitForm(e) {
+  e.preventDefault(); //Get email value
+
+  var email = getInputVal('newsletter-email'); // Save message
+
+  saveMessage(email);
+} // Function to get form value (Email Address)
+
+
+function getInputVal(id) {
+  return document.getElementById(id).value;
+} // Save email to firebase
+
+
+function saveMessage(email) {
+  emailRef.once('value') // Return snapshot of the DB
+  .then(function (dataSnapshot) {
+    // Returns DB entries as collection of objects
+    var lol = Object.values(dataSnapshot.val()); // Filters to the first item in the object (in our case it's users) which returns another
+    // set of objects that are our email address key/values (Email: Value).
+    // Returns just the value from the object
+
+    var obj = Object.values(lol[0]); // Init empty Array
+
+    var arr = []; // For each item in our array, add it to our arr variable
+
+    obj.forEach(function (val) {
+      arr = arr.concat(Object.values(val));
+    }); // if email address is included in our array then throw some sort of error to say it exists.
+
+    if (arr.includes(email)) {
+      console.log('it exists'); //If it doesn't exist then post value to database
+    } else {
+      emailRef.child('users').push().set({
+        'email': email
+      });
+      alert('Your Email address has been saved!');
+    } // If the database is empty, it throws an error so within the error catch,
+    // add the value to the database
+
+  }).catch(function (err) {
+    console.log(err);
+    emailRef.child('users').push().set({
+      'email': email
+    });
+    alert('Your Email address has been saved!');
+  });
+}
 },{"./scss/styles.scss":"scss/styles.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -235,7 +288,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59812" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56188" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
