@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "parcel index.html",
-        "build": "parcel build index.html"
+        "build": "parcel build index.html --public-url ./"
     },
     "repository": "https://github.com/Shehzad-Abdulcadir/newsletter-signup.git",
     "author": "Shehzad Abdulcadir",

@@ -33,11 +33,8 @@ $colour-grey : #f1f1f1;
         padding: 10px;
         border: none;
         background: $colour-grey;
-
-        &::-webkit-input-placeholder {
-            Font-Family: $secondary-font;
-            Font-Size: 16px;
-        }
+        Font-Family: $secondary-font;
+        Font-Size: 16px;
     }
 
     &__button {
