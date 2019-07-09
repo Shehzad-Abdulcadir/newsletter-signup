@@ -337,31 +337,45 @@ template {
   display: none;
 }
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
+.heading {
+  margin: 18px 0;
+  Font-Family: "Roboto Condensed", Sans-Serif;
+  Font-Size: 35px;
+}
+
+.copy {
+  margin: 18px 0;
+  Font-Family: "Cabin", Sans-Serif;
+  Font-Size: 16px;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 16rem auto;
+  margin: 200px auto;
 }
 
 .newsletter__input {
-  padding: 10px;
   display: inline-block;
+  padding: 10px;
   border: none;
   background: #f1f1f1;
 }
+.newsletter__input::-webkit-input-placeholder {
+  Font-Family: "Cabin", Sans-Serif;
+  Font-Size: 16px;
+}
 .newsletter__button {
   display: inline-block;
-  background-color: #4CAF50;
-  color: white;
   padding: 10px;
   border: none;
-  cursor: pointer;
   opacity: 0.9;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  Font-Family: "Cabin", Sans-Serif;
+  Font-Size: 16px;
 }
 .newsletter__button:hover {
   opacity: 1;

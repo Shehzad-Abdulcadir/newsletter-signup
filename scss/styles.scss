@@ -2,33 +2,54 @@
 @import 'normalize';
 
 // Styles
+$primary-font : 'Roboto Condensed', Sans-Serif;
+$secondary-font : 'Cabin', Sans-Serif;
 
-body {
-    font-family: 'Source Sans Pro', sans-serif;
+$colour-green : #4CAF50;
+$colour-grey : #f1f1f1;
+
+.heading {
+    margin: 18px 0;
+    Font-Family: $primary-font;
+    Font-Size: 35px;
 }
+
+.copy {
+    margin: 18px 0;
+    Font-Family: $secondary-font;
+    Font-Size: 16px;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 16rem auto;
+    margin: 200px auto;
 }
 
 .newsletter {
     &__input {
-        padding: 10px;
         display: inline-block;
+        padding: 10px;
         border: none;
-        background: #f1f1f1;
+        background: $colour-grey;
+
+        &::-webkit-input-placeholder {
+            Font-Family: $secondary-font;
+            Font-Size: 16px;
+        }
     }
 
     &__button {
         display: inline-block;
-        background-color: #4CAF50;
-        color: white;
         padding: 10px;
         border: none;
-        cursor: pointer;
         opacity: 0.9;
+        background-color: $colour-green;
+        color: white;
+        cursor: pointer;
+        Font-Family: $secondary-font;
+        Font-Size: 16px;
 
         &:hover {
             opacity: 1;
