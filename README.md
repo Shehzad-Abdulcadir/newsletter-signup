@@ -10,6 +10,15 @@ Google Firebase was selected as the main platform to use for this project, Googl
 
 Firebase also has a large community and plenty of documentation available online.
 
+# PHP & MySQL
+A variant of this project was also written using PHP and MySQL. Find the source code inside the /php/ folder.
+
+A free temporary database was created using www.db4free.net to store the form submissions.
+
+The email address entered is trimmed and converted to lowercase, in addition the email validation is done using PHP's filter_var() function.
+
+The SQL database is queried for existing email addresses to the one posted in the form and throws an error or success message accordingly. The connection to the database is then closed.
+
 # Preparing the Project
 This project makes use of ParcelJS, ParcelJS was selected as it is quick to setup and it allows me to use LiveReload, SCSS and allows me to minify and compile this project.
 
